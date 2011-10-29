@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, MetarActivity!</string>
+    <string name="app_name">Metar</string>
+    <string name="initialStation">EDDF</string>
+    <string name="queryText">Query</string>
+    <string-array name="prefStations">
+        <item>EDDF: Frankfurt</item>
+        <item>LOWW: Wien</item>
+        <item>LOWI: Insbruck</item>
+        <item>KORD: Chicago</item>
+        <item>EDDM: München</item>
+        <item>EDDW: Bremen</item>
+        <item>EDDB: Berlin</item>
+        <item>VHHH: Hong Kong</item>
+        <item>WSSS: Singapur</item>
+        <item>ZBAA: Peking</item>
+        <item>UUDD: Moskau</item>
+        <item>KJFK: New York</item>
+        <item>KSFO: San Fracisco</item>
+        <item>EGLC: London City</item>
+        <item>RJAA: Tokio</item>
+    </string-array>
+        <string name="selectText">Select</string>
+</resources>

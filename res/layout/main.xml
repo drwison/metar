@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout1">
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="1">
+        <EditText android:id="@+id/editStation" android:layout_width="78dp" android:layout_height="wrap_content" android:layout_weight="0.30" android:imeOptions="actionGo" android:singleLine="true">
+            <requestFocus></requestFocus>
+        </EditText>
+        <Button android:layout_weight="0.30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonSelect"
+                android:text="@string/selectText"></Button>
+        <Button android:text="@string/queryText"
+                android:layout_weight="0.30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonQuery"></Button>
+    </LinearLayout>
+    <TextView android:text="TextView" android:layout_width="match_parent" android:id="@+id/screen" android:layout_weight="0.75" android:layout_height="match_parent"></TextView>
+</LinearLayout>
