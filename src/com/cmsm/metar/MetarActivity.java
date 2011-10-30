@@ -34,7 +34,7 @@ import android.widget.TextView.OnEditorActionListener;
 public class MetarActivity extends Activity {
 	private static final String TAG = "Metar";
 	private TextView tvr;
-	private EditText edit;
+	private EditText edit, screen;
 	private String display;
 	private Button query, select;
 	AlertDialog alert;
@@ -45,8 +45,9 @@ public class MetarActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        tvr = (TextView)this.findViewById(R.id.screen);
+        // tvr = (TextView)this.findViewById(R.id.screen);
         edit = (EditText)this.findViewById(R.id.editStation);
+        screen = (EditText)this.findViewById(R.id.screenOut);
         query = (Button)this.findViewById(R.id.buttonQuery);
         select = (Button)this.findViewById(R.id.buttonSelect);
         Resources res = getResources();
@@ -180,10 +181,11 @@ public class MetarActivity extends Activity {
 
     private void msgDisplay(String s) {
     	display = s;
-		tvr.setTextColor(Color.CYAN);
-		tvr.post(new Runnable() {
+		// tvr.setTextColor(Color.CYAN);
+		screen.post(new Runnable() {
 			public void run() {
-				tvr.setText(display);
+				// tvr.setText(display);
+				screen.setText(display);
 			}
 		});
     }

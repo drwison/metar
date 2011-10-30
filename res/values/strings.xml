@@ -10,16 +10,38 @@
         <item>LOWI: Insbruck</item>
         <item>KORD: Chicago</item>
         <item>EDDM: München</item>
+        <item>EDDH: Hamburg</item>
+        <item>EHAM: Amsterdam</item>
         <item>EDDW: Bremen</item>
         <item>EDDB: Berlin</item>
+        <item>LIRF: Rom</item>
+        <item>LFPG: Paris</item>
+        <item>LPPT: Lissabon</item>
+        <item>EGLC: London City</item>
+        <item>LEMD: Madrid</item>
+        <item>LEMG: Málaga</item>
+        <item>LKPR: Prag</item>
+        <item>LEPA: Palma de Mallorca</item>
+        <item>GCLP: Gran Canaria</item>
+        <item>LGAV: Athen</item>
+        <item>LGIR: Kreta</item>
         <item>VHHH: Hong Kong</item>
         <item>WSSS: Singapur</item>
+        <item>VTBS: Bangkok</item>
         <item>ZBAA: Peking</item>
         <item>UUDD: Moskau</item>
         <item>KJFK: New York</item>
-        <item>KSFO: San Fracisco</item>
-        <item>EGLC: London City</item>
+        <item>KSFO: San Francisco</item>
+        <item>KLAX: Los Angeles</item>
+        <item>KSEA: Seattle</item>
+        <item>KDFW: Dallas</item>
+        <item>KTYS: Knoxville</item>
+        <item>KMIA: Miami</item>
         <item>RJAA: Tokio</item>
+        <item>YSSY: Sydney</item>
+        <item>NZAA: Auckland</item>Auckland
+        <item>NZWN: Wellington</item>
+        <item>NZCH: Christchurch</item>
     </string-array>
         <string name="selectText">Select</string>
 </resources>

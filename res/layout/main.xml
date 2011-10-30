@@ -4,10 +4,20 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:weightSum="1">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout1">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/linearLayout1">
     </LinearLayout>
-    <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="1">
-        <EditText android:id="@+id/editStation" android:layout_width="78dp" android:layout_height="wrap_content" android:layout_weight="0.30" android:imeOptions="actionGo" android:singleLine="true">
+    <LinearLayout android:id="@+id/linearLayout2"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:weightSum="1">
+        <EditText android:id="@+id/editStation"
+                  android:layout_width="78dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="0.30"
+                  android:imeOptions="actionGo"
+                  android:singleLine="true">
             <requestFocus></requestFocus>
         </EditText>
         <Button android:layout_weight="0.30"
@@ -21,5 +31,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonQuery"></Button>
     </LinearLayout>
-    <TextView android:text="TextView" android:layout_width="match_parent" android:id="@+id/screen" android:layout_weight="0.75" android:layout_height="match_parent"></TextView>
+    <EditText android:layout_width="match_parent"
+              android:inputType="textMultiLine"
+              android:id="@+id/screenOut"
+              android:layout_height="match_parent"
+              android:editable="false" android:cursorVisible="false" android:text="Empty - no request issued.">
+    </EditText>
 </LinearLayout>
