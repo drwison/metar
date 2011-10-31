@@ -40,9 +40,7 @@ import android.widget.TextView.OnEditorActionListener;
 public class MetarActivity extends Activity {
 	private static final String TAG = "Metar";
 	private ListView list;
-	private EditText edit;
 	private String display;
-	private Button query;
 	private Activity currentActivity=this;
 	AlertDialog alert;
 	CharSequence[] items;
@@ -52,8 +50,6 @@ public class MetarActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        edit = (EditText)this.findViewById(R.id.editStation);
-        query = (Button)this.findViewById(R.id.buttonQuery);
         list = (ListView)this.findViewById(R.id.listStations);
         Resources res = getResources();
         items = res.getStringArray(R.array.prefStations);
@@ -64,43 +60,13 @@ public class MetarActivity extends Activity {
         
         list.setOnItemClickListener(new OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-        		edit.setText(items[position].subSequence(0, 4));
-        		pressQuery();
+        		pressQuery(items[position].subSequence(0, 4).toString());
         	}
         });
         
-        query.setOnClickListener(new OnClickListener() {
-        	@Override
-        	public void onClick(View v) {
-        		pressQuery();
-        	}
-        });
-        
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Pick a station");
-		builder.setItems(items, new DialogInterface.OnClickListener() {
-		    public void onClick(DialogInterface dialog, int item) {
-		        // Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
-		    	edit.setText(items[item].subSequence(0, 4));
-		    	pressQuery();
-		    }
-		});
-		alert = builder.create();
-		
-        edit.setOnEditorActionListener(new OnEditorActionListener() {
-        	public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        		if (actionId == EditorInfo.IME_ACTION_GO) {
-        			InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);;
-        			imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-        			query.performClick();
-        			return true;
-        		}
-        		return false;
-        	}
-        });
     }
     
-    public void pressQuery() {
+    public void pressQuery(String station) {
 		LinkedHashMap lhm;
 		HashMap hm;
 		int count;
@@ -112,7 +78,6 @@ public class MetarActivity extends Activity {
 		
 		Log.d(TAG, "Start");
 		MetarParseReport mpr = new MetarParseReport();
-		String station = edit.getText().toString();
 		station = station.toUpperCase();
 		String urlstring = "http://weather.noaa.gov/pub/data/observations/metar/stations/" + station + ".TXT";
 

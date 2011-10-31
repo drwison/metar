@@ -12,14 +12,6 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:weightSum="1">
-        <EditText android:id="@+id/editStation"
-                  android:layout_width="78dp"
-                  android:layout_height="wrap_content"
-                  android:imeOptions="actionGo"
-                  android:singleLine="true" android:layout_weight="0.70">
-            <requestFocus></requestFocus>
-        </EditText>
-        <Button android:layout_height="wrap_content" android:text="@string/queryText" android:id="@+id/buttonQuery" android:layout_width="147dp"></Button>
     </LinearLayout>
     <ListView android:layout_height="wrap_content"
               android:layout_width="match_parent"
