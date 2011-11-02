@@ -12,6 +12,7 @@ import java.util.LinkedHashMap;
 import ucar.nc2.dt.point.decode.MetarParseReport;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -42,6 +43,7 @@ public class MetarActivity extends Activity {
 	private ListView list;
 	private String display;
 	private Activity currentActivity=this;
+	private ProgressDialog pd;
 	AlertDialog alert;
 	CharSequence[] items;
 	
@@ -80,6 +82,8 @@ public class MetarActivity extends Activity {
 		MetarParseReport mpr = new MetarParseReport();
 		station = station.toUpperCase();
 		String urlstring = "http://weather.noaa.gov/pub/data/observations/metar/stations/" + station + ".TXT";
+
+		pd = ProgressDialog.show(this, "This is the title", "This is the detail text", true, false, null);
 
 		try {
 			url = new URL(urlstring);
@@ -150,6 +154,7 @@ public class MetarActivity extends Activity {
     }
 
     private void msgDisplay(String s) {
+    	pd.dismiss();
     	display = s;
 		Intent in = new Intent(this, DisplayActivity.class);
 		in.putExtra("display", display);
