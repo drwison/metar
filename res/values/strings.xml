@@ -6,43 +6,44 @@
     <string name="queryText">Query</string>
     <string name="editList">Edit stations</string>
     <string-array name="prefStations">
-        <item>EDDF: Frankfurt</item>
-        <item>LOWW: Wien</item>
-        <item>LOWI: Insbruck</item>
-        <item>KORD: Chicago</item>
-        <item>EDDM: München</item>
-        <item>EDDH: Hamburg</item>
-        <item>EHAM: Amsterdam</item>
-        <item>EDDW: Bremen</item>
-        <item>EDDB: Berlin</item>
-        <item>LIRF: Rom</item>
-        <item>LFPG: Paris</item>
-        <item>LPPT: Lissabon</item>
-        <item>EGLC: London City</item>
-        <item>LEMD: Madrid</item>
-        <item>LEMG: Málaga</item>
-        <item>LKPR: Prag</item>
-        <item>LEPA: Palma de Mallorca</item>
-        <item>GCLP: Gran Canaria</item>
-        <item>LGAV: Athen</item>
-        <item>LGIR: Kreta</item>
-        <item>VHHH: Hong Kong</item>
-        <item>WSSS: Singapur</item>
-        <item>VTBS: Bangkok</item>
-        <item>ZBAA: Peking</item>
-        <item>UUDD: Moskau</item>
-        <item>KJFK: New York</item>
-        <item>KSFO: San Francisco</item>
-        <item>KLAX: Los Angeles</item>
-        <item>KSEA: Seattle</item>
-        <item>KDFW: Dallas</item>
-        <item>KTYS: Knoxville</item>
-        <item>KMIA: Miami</item>
-        <item>RJAA: Tokio</item>
-        <item>YSSY: Sydney</item>
-        <item>NZAA: Auckland</item>Auckland
-        <item>NZWN: Wellington</item>
-        <item>NZCH: Christchurch</item>
+        <item>Amsterdam (EHAM)</item>
+        <item>Athen (LGAV)</item>
+        <item>Auckland (NZAA)</item>
+        <item>Bangkok (VTBS)</item>
+        <item>Berlin (EDDB)</item>
+        <item>Bremen (EDDW)</item>
+        <item>Chicago (KORD)</item>
+        <item>Christchurch (NZCH)</item>
+        <item>Dallas (KDFW)</item>
+        <item>Frankfurt (EDDF)</item>
+        <item>Gran Canaria (GCLP)</item>
+        <item>Hamburg (EDDH)</item>
+        <item>Hong Kong (VHHH)</item>
+        <item>Insbruck (LOWI)</item>
+        <item>Knoxville (KTYS)</item>
+        <item>Kreta (LGIR)</item>
+        <item>Lissabon (LPPT)</item>
+        <item>London City (EGLC)</item>
+        <item>Los Angeles (KLAX)</item>
+        <item>Madrid (LEMD)</item>
+        <item>Málaga (LEMG)</item>
+        <item>Mauritius (FIMP)</item>
+        <item>Miami (KMIA)</item>
+        <item>Moskau (UUDD)</item>
+        <item>München (EDDM)</item>
+        <item>New York (KJFK)</item>
+        <item>Palma de Mallorca (LEPA)</item>
+        <item>Paris (LFPG)</item>
+        <item>Peking (ZBAA)</item>
+        <item>Prag (LKPR)</item>
+        <item>Rom (LIRF)</item>
+        <item>San Francisco (KSFO)</item>
+        <item>Seattle (KSEA)</item>
+        <item>Singapur (WSSS)</item>
+        <item>Sydney (YSSY)</item>
+        <item>Tokio (RJAA)</item>
+        <item>Wellington (NZWN)</item>
+        <item>Wien (LOWW)</item>
     </string-array>
         <string name="selectText">Select</string>
 </resources>

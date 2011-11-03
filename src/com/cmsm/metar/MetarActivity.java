@@ -52,7 +52,7 @@ public class MetarActivity extends Activity {
         
         list.setOnItemClickListener(new OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-        		pressQuery(items[position].subSequence(0, 4).toString());
+        		pressQuery(items[position].subSequence(items[position].length()-1-4, items[position].length()-1).toString());
         	}
         });
         
