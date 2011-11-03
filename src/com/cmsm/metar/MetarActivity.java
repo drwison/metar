@@ -13,6 +13,7 @@ import ucar.nc2.dt.point.decode.MetarParseReport;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -53,7 +55,20 @@ public class MetarActivity extends Activity {
         	}
         });
         
-    	
+    	list.setOnItemLongClickListener(new OnItemLongClickListener() {
+    		public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
+    			AlertDialog alertDialog = new AlertDialog.Builder(v.getContext()).create();
+    			alertDialog.setTitle("Station löschen");
+    			alertDialog.setMessage("Wirklich?");
+    			alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+    				public void onClick(DialogInterface dialog, int which) {
+    			       //here you can add functions
+    			    }
+    			}); 
+    			alertDialog.show();
+    			return true;
+    		}
+    	});
     }
 
 	@Override
@@ -129,7 +144,7 @@ public class MetarActivity extends Activity {
 		String ibuffer = new String(b);
 		String s[] = ibuffer.split("\n");
 		String metarDate, metar;
-		display = ibuffer + "\n";
+		display = ibuffer;
 		for (int i=0; i<s.length; i++) {
 			if (s[i].matches("\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}")) {
 				metarDate = s[i];
@@ -149,7 +164,7 @@ public class MetarActivity extends Activity {
 					Log.d(TAG, o.toString());
 					Log.d(TAG, val);
 					Log.d(TAG, hm.get(o).toString());
-					display += o.toString() + ": " + val + " " + hm.get(o).toString() + "\n";
+					display += "\n" + o.toString() + ": " + val + " " + hm.get(o).toString();
 				}
 			}
 		}

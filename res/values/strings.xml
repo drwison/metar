@@ -43,7 +43,6 @@
         <item>NZAA: Auckland</item>Auckland
         <item>NZWN: Wellington</item>
         <item>NZCH: Christchurch</item>
-        <item>Manuelle Eingabe...</item>
     </string-array>
         <string name="selectText">Select</string>
 </resources>

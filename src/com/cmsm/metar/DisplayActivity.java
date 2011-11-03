@@ -2,6 +2,7 @@ package com.cmsm.metar;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
 public class DisplayActivity extends Activity {
@@ -15,7 +16,7 @@ public class DisplayActivity extends Activity {
         String display = (String)xfer.get("display");
         setContentView(R.layout.sub);
         tv = (TextView)this.findViewById(R.id.textViewSub);
-        
+        tv.setMovementMethod(new ScrollingMovementMethod());
         tv.setText(display);
 	}
 }
