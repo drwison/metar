@@ -4,6 +4,7 @@
     <string name="app_name">Metar</string>
     <string name="initialStation">EDDF</string>
     <string name="queryText">Query</string>
+    <string name="editList">Edit stations</string>
     <string-array name="prefStations">
         <item>EDDF: Frankfurt</item>
         <item>LOWW: Wien</item>

@@ -13,36 +13,23 @@ import ucar.nc2.dt.point.decode.MetarParseReport;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 
 public class MetarActivity extends Activity {
 	private static final String TAG = "Metar";
 	private ListView list;
 	private String display;
-	private Activity currentActivity=this;
 	private ProgressDialog pd;
 	AlertDialog alert;
 	CharSequence[] items;
@@ -66,8 +53,24 @@ public class MetarActivity extends Activity {
         	}
         });
         
+    	
     }
-    
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu , menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	    
+	    }
+	    return true;
+	}
+
     public void pressQuery(String station) {
 		LinkedHashMap lhm;
 		HashMap hm;
