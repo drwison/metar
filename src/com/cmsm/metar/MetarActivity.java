@@ -17,6 +17,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Debug;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -168,13 +169,18 @@ public class MetarActivity extends Activity {
 				}
 			}
 		}
+		if (Debug.isDebuggerConnected()) {
+			for (int j=0; j<200; j++) {
+				display += "\n" + Integer.toString(j);
+			}
+		}
 		msgDisplay(display);
     }
 
     private void msgDisplay(String s) {
     	pd.dismiss();
     	display = s;
-		Intent in = new Intent(this, DisplayActivity.class);
+		Intent in = new Intent(this, ScrollView.class);
 		in.putExtra("display", display);
 		startActivity(in);
     }

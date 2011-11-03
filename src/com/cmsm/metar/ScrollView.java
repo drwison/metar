@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
-public class DisplayActivity extends Activity {
+public class ScrollView extends Activity {
 	private TextView tv;
 	
 	@Override
@@ -16,7 +16,7 @@ public class DisplayActivity extends Activity {
         String display = (String)xfer.get("display");
         setContentView(R.layout.sub);
         tv = (TextView)this.findViewById(R.id.textViewSub);
-        tv.setMovementMethod(new ScrollingMovementMethod());
+        // tv.setMovementMethod(new ScrollingMovementMethod());
         tv.setText(display);
 	}
 }
