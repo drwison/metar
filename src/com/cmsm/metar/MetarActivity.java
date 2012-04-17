@@ -18,6 +18,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Debug;
+import android.os.StrictMode;
+import android.os.StrictMode.ThreadPolicy;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -82,7 +84,18 @@ public class MetarActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
-	    
+	    case 1:
+			Intent in1 = new Intent(this, Configuration.class);
+			//in1.putExtra("display", display);
+			startActivity(in1);
+			break;
+	    case 2:
+			Intent in2 = new Intent(this, Configuration.class);
+			//in2.putExtra("display", display);
+			startActivity(in2);
+			break;
+		default:
+			break;
 	    }
 	    return true;
 	}
@@ -101,6 +114,9 @@ public class MetarActivity extends Activity {
 		MetarParseReport mpr = new MetarParseReport();
 		station = station.toUpperCase();
 		String urlstring = "http://weather.noaa.gov/pub/data/observations/metar/stations/" + station + ".TXT";
+		
+		ThreadPolicy tp = ThreadPolicy.LAX;
+		StrictMode.setThreadPolicy(tp);
 
 		pd = ProgressDialog.show(this, "This is the title", "This is the detail text", true, false, null);
 

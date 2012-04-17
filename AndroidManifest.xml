@@ -15,5 +15,6 @@
             </intent-filter>
         </activity>
         <activity android:name="ScrollView"></activity>
+        <activity android:name="Configuration"></activity>
     </application>
 </manifest>

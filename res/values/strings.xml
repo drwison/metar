@@ -7,20 +7,32 @@
     <string name="editList">Edit stations</string>
     <string-array name="prefStations">
         <item>Amsterdam (EHAM)</item>
+        <item>Ankara (LTAC)</item>
         <item>Athen (LGAV)</item>
         <item>Auckland (NZAA)</item>
         <item>Bangkok (VTBS)</item>
+        <item>Belgrad (LYBE)</item>
         <item>Berlin (EDDB)</item>
+        <item>Bern (LSZB)</item>
+        <item>Bratislava (LZIB)</item>
         <item>Bremen (EDDW)</item>
+        <item>Brüssel (EBCI)</item>
+        <item>Bukarest (LROP)</item>
+        <item>Budapest (LHBP)</item>
         <item>Chicago (KORD)</item>
         <item>Christchurch (NZCH)</item>
         <item>Dallas (KDFW)</item>
+        <item>Dubai (OMDW)</item>
+        <item>Dublin (EIDW)</item>
         <item>Frankfurt (EDDF)</item>
         <item>Gran Canaria (GCLP)</item>
         <item>Hamburg (EDDH)</item>
+        <item>Helsinki (EFHK)</item>
         <item>Hong Kong (VHHH)</item>
         <item>Insbruck (LOWI)</item>
+        <item>Kiew (UKBB)</item>
         <item>Knoxville (KTYS)</item>
+        <item>Kopenhagen (EKCH)</item>
         <item>Kreta (LGIR)</item>
         <item>Lissabon (LPPT)</item>
         <item>London City (EGLC)</item>
@@ -28,22 +40,31 @@
         <item>Madrid (LEMD)</item>
         <item>Málaga (LEMG)</item>
         <item>Mauritius (FIMP)</item>
+        <item>Mexico Stadt (MMMX)</item>
         <item>Miami (KMIA)</item>
         <item>Moskau (UUDD)</item>
         <item>München (EDDM)</item>
         <item>New York (KJFK)</item>
+        <item>Oslo (ENGM)</item>
         <item>Palma de Mallorca (LEPA)</item>
         <item>Paris (LFPG)</item>
         <item>Peking (ZBAA)</item>
         <item>Prag (LKPR)</item>
+        <item>Reykjavik (BIRK)</item>
+        <item>Riga (EVRA)</item>
+        <item>Rio de Janeiro (SBGL)</item>
         <item>Rom (LIRF)</item>
         <item>San Francisco (KSFO)</item>
         <item>Seattle (KSEA)</item>
         <item>Singapur (WSSS)</item>
+        <item>Stockholm (ESSA)</item>
         <item>Sydney (YSSY)</item>
         <item>Tokio (RJAA)</item>
+        <item>Vilnius (EYVI)</item>
+        <item>Warschau (EPWA)</item>
         <item>Wellington (NZWN)</item>
         <item>Wien (LOWW)</item>
+        <item>Zagreb (LDZA)</item>
     </string-array>
         <string name="selectText">Select</string>
 </resources>
