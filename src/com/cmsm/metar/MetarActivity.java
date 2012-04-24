@@ -1,7 +1,9 @@
 package com.cmsm.metar;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -9,6 +11,11 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
 import ucar.nc2.dt.point.decode.MetarParseReport;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -16,6 +23,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Debug;
 import android.os.StrictMode;
@@ -100,97 +108,78 @@ public class MetarActivity extends Activity {
 	    return true;
 	}
 
-    public void pressQuery(String station) {
-		LinkedHashMap lhm;
-		HashMap hm;
-		int count;
-		URL url;
-		HttpURLConnection connection;
-		InputStream stream;
-		byte[] b = new byte[1024];
-		int nbytes;
-		
-		Log.d(TAG, "Start");
+	private class DownloadMetarTask extends AsyncTask<String, Void, String> {
+		//String metarDate;
 		MetarParseReport mpr = new MetarParseReport();
+		LinkedHashMap<String, String> lhm;
+		HashMap<String, String> hm;
+	
+		protected String doInBackground(String... urls) {
+			String display = "";
+			
+			for (String url : urls) {
+				DefaultHttpClient client = new DefaultHttpClient();
+				HttpGet httpGet = new HttpGet(url);
+				try {
+					HttpResponse execute = client.execute(httpGet);
+					InputStream content = execute.getEntity().getContent();
+					BufferedReader buffer = new BufferedReader(new InputStreamReader(content));
+					String s = "";
+					while ((s = buffer.readLine()) != null) {
+						display += s + "\n";
+						if (s.matches("\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}")) {
+							//metarDate = s;
+						} else { // if (s.startsWith(station)) {
+							mpr.parseReport(s);
+							lhm = (LinkedHashMap<String, String>)mpr.getFields();
+							hm = (HashMap<String, String>)mpr.getUnits();
+							
+							Iterator it = lhm.keySet().iterator();
+							int count = 0;
+							while (it.hasNext()) {
+								count++;
+								Object o = it.next();
+								String val = lhm.get(o).toString();
+								Log.d(TAG, Integer.toString(count));
+								Log.d(TAG, o.toString());
+								Log.d(TAG, val);
+								Log.d(TAG, hm.get(o).toString());
+								display += "\n" + o.toString() + ": " + val + " " + hm.get(o).toString();
+							}
+						}
+						
+					}
+					if (Debug.isDebuggerConnected()) {
+						for (int j=0; j<200; j++) {
+							display += "\n" + Integer.toString(j);
+						}
+					}
+					//msgDisplay(display);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return display;
+		}
+		
+		protected void onPostExecute(String display) {
+			Log.d(TAG, "AsyncTask onPostExecute");
+			Log.d(TAG, display);
+			msgDisplay(display);
+		}
+	}
+	
+    public void pressQuery(String station) {
+		Log.d(TAG, "Start");
 		station = station.toUpperCase();
 		String urlstring = "http://weather.noaa.gov/pub/data/observations/metar/stations/" + station + ".TXT";
 		
-		ThreadPolicy tp = ThreadPolicy.LAX;
-		StrictMode.setThreadPolicy(tp);
+		//StrictMode.setThreadPolicy(ThreadPolicy.LAX);		// For ICS: They want threaded Internet activities
 
-		pd = ProgressDialog.show(this, "This is the title", "This is the detail text", true, false, null);
+		pd = ProgressDialog.show(this, "METAR", "NOAA Online Query", true, false, null);
 
-		try {
-			url = new URL(urlstring);
-			try {
-				connection = (HttpURLConnection)url.openConnection();
-				try {
-					connection.setRequestMethod("GET");
-					try {
-						connection.connect();
-						try {
-							stream = connection.getInputStream();
-						} catch (IOException e) {
-							msgDisplay("Exception: Cannot getInputStream");
-							Log.e(TAG, "getInputSTream", e); return;
-						}
-					} catch (IOException e) {
-						msgDisplay("Exception: Cannot connect");
-						Log.d(TAG, "connect", e); return;
-					}
-				} catch (ProtocolException e) {
-					msgDisplay("Exception: Cannot setRequstMethod");
-					Log.d(TAG, "setRequestMethod", e); return;
-				}
-			} catch (IOException e) {
-				msgDisplay("Exception: Cannot HttpURLCOnnection");
-				Log.d(TAG, "HttpURLConnection", e); return;
-			}
-		} catch (MalformedURLException e) {
-			msgDisplay("Exception: Malformed URL");
-			Log.d(TAG, "URL", e); return;
-		}
-	
-		try {
-			nbytes = stream.read(b);
-		} catch (IOException e) {
-			msgDisplay("Exception: Read IO from URL failed");
-			Log.d(TAG, e.getMessage()); return;
-		}
-		
-		String ibuffer = new String(b);
-		String s[] = ibuffer.split("\n");
-		String metarDate, metar;
-		display = ibuffer;
-		for (int i=0; i<s.length; i++) {
-			if (s[i].matches("\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}")) {
-				metarDate = s[i];
-			} else if (s[i].startsWith(station)) {
-				metar = s[i];
-				mpr.parseReport(metar);
-				lhm = mpr.getFields();
-				hm = mpr.getUnits();
-				
-				Iterator it = lhm.keySet().iterator();
-				count = 0;
-				while (it.hasNext()) {
-					count++;
-					Object o = it.next();
-					String val = lhm.get(o).toString();
-					Log.d(TAG, Integer.toString(count));
-					Log.d(TAG, o.toString());
-					Log.d(TAG, val);
-					Log.d(TAG, hm.get(o).toString());
-					display += "\n" + o.toString() + ": " + val + " " + hm.get(o).toString();
-				}
-			}
-		}
-		if (Debug.isDebuggerConnected()) {
-			for (int j=0; j<200; j++) {
-				display += "\n" + Integer.toString(j);
-			}
-		}
-		msgDisplay(display);
+		DownloadMetarTask task = new DownloadMetarTask();
+		task.execute(new String[] { urlstring });		
     }
 
     private void msgDisplay(String s) {

@@ -2,7 +2,6 @@ package com.cmsm.metar;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
 public class ScrollView extends Activity {
