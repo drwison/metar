@@ -1,13 +1,8 @@
 package com.cmsm.metar;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -26,8 +21,8 @@ import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Debug;
-import android.os.StrictMode;
-import android.os.StrictMode.ThreadPolicy;
+//import android.os.StrictMode;
+//import android.os.StrictMode.ThreadPolicy;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -134,7 +129,7 @@ public class MetarActivity extends Activity {
 							lhm = (LinkedHashMap<String, String>)mpr.getFields();
 							hm = (HashMap<String, String>)mpr.getUnits();
 							
-							Iterator it = lhm.keySet().iterator();
+							Iterator<String> it = lhm.keySet().iterator();
 							int count = 0;
 							while (it.hasNext()) {
 								count++;
