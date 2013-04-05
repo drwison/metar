@@ -63,10 +63,10 @@ public class MetarActivity extends Activity {
         
     	list.setOnItemLongClickListener(new OnItemLongClickListener() {
     		public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
-    			AlertDialog alertDialog = new AlertDialog.Builder(v.getContext()).create();
+    			AlertDialog.Builder alertDialog = new AlertDialog.Builder(v.getContext());
     			alertDialog.setTitle("Station löschen");
     			alertDialog.setMessage("Wirklich?");
-    			alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+    			alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
     				public void onClick(DialogInterface dialog, int which) {
     			       //here you can add functions
     			    }

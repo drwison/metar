@@ -65,6 +65,7 @@
         <item>Wellington (NZWN)</item>
         <item>Wien (LOWW)</item>
         <item>Zagreb (LDZA)</item>
+        <item >Zürich (LSZH)</item>
     </string-array>
         <string name="selectText">Select</string>
 </resources>
