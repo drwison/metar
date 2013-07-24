@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>edu.ucar</groupId>
+    <artifactId>thredds-parent</artifactId>
+    <version>4.3.16-SNAPSHOT</version>
+  </parent>
+
+  <!-- groupId>edu.ucar</groupId -->
+  <artifactId>visadCdm</artifactId>
+  <packaging>jar</packaging>
+  <name>VisAD-based IOSPs</name>
+  <description>
+    Several netCDF-Java IOSPs that depend on the VisAD library including a
+    GEMPAK IOSP for grid, station, and sounding datasets; a McIDAS IOSP for
+    grid datasets; and an ADDE IOSP for image and station datasets.
+  </description>
+  <url>http://www.unidata.ucar.edu/software/netcdf-java/</url>
+
+  <!-- Dependencies -->
+  <dependencies>
+    <dependency>
+      <groupId>edu.ucar</groupId>
+      <artifactId>netcdf</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>edu.wisc.ssec</groupId>
+      <artifactId>visad</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>edu.ucar</groupId>
+      <artifactId>netcdf</artifactId>
+      <type>test-jar</type>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-jdk14</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <!-- finalName>visadCdm</finalName -->
+    <!--testSourceDirectory>void</testSourceDirectory-->
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <minimizeJar>true</minimizeJar>
+              <artifactSet>
+                <includes>
+                  <include>edu.wisc.ssec:visad</include>
+                </includes>
+              </artifactSet>
+
+              <filters>
+                <filter>
+                  <artifact>edu.wisc.ssec:visad</artifact>
+                  <excludes>
+                    <exclude>dods/**</exclude>
+                    <exclude>gnu/**</exclude>
+                    <exclude>HTTPClient/**</exclude>
+                    <exclude>loci/**</exclude>
+                    <exclude>ncsa/**</exclude>
+                    <exclude>ucar/**</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
